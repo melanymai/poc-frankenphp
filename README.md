@@ -33,3 +33,9 @@ This repository contains the Symfony FrankenPHP App, a web application built usi
 3. **Access the application** 🌐
 
    Once the containers are up and running, you can access the application by navigating to [http://localhost:8001](http://localhost:8001) in your web browser.
+
+### Troubleshooting 🛠️
+
+- **Issues with Line Endings on Windows:** 
+
+If you encounter problems running shell scripts on Windows via Docker, it may be due to differences in line endings between operating systems. Ensure that script files have Unix-style line endings (LF) rather than DOS-style line endings (CRLF). You can use tools like `dos2unix` to convert line endings if needed.
