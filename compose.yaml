@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  database:
+    container_name: postgres
+    image: postgres:16
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database-poc
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+    networks:
+      - internal
+  php:
+    container_name: frankenphp
+    build:
+      context: .
+    ports:
+      - "8001:80"
+    networks:
+      internal: ~
+    environment:
+      - APP_ENV=dev
+      - APP_DEBUG=1
+    volumes:
+      - .:/app:rw
+      - ./docker/php/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./docker/php/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    labels:
+      - "traefik.enable=true"
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  database_data:
