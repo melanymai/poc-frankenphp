@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FrankenPHP App{% endblock %}
+
+{% block body %}
+
+    <header>
+        <h1>Les étudiants</h1>
+    </header>
+
+    {% if students|length > 0 %}
+        <ul>
+            {% for student in students %}
+                <article>
+                    <li>{{ student.lastname }} {{ student.firstname }}</li>
+                </article>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
