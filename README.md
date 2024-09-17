@@ -20,6 +20,9 @@ This repository contains the Symfony FrankenPHP App, a web application built usi
 
     ```dotenv
     DATABASE_URL="postgresql://YOUR_USER:YOUR_PASSWORD@database:5432/YOUR_DATABASE?serverVersion=16&charset=utf8"
+    POSTGRES_USER=YOUR_USER
+    POSTGRES_PASSWORD=YOUR_PASSWORD
+    POSTGRES_DB=YOUR_DATABASE
     ```
 
 2. **Build the Docker image and run containers** 🐳
@@ -34,8 +37,6 @@ This repository contains the Symfony FrankenPHP App, a web application built usi
 
    Once the containers are up and running, you can access the application by navigating to [http://localhost:8001](http://localhost:8001) in your web browser.
 
-### Troubleshooting 🛠️
+4. **API documentation** 📖
 
-- **Issues with Line Endings on Windows:** 
-
-If you encounter problems running shell scripts on Windows via Docker, it may be due to differences in line endings between operating systems. Ensure that script files have Unix-style line endings (LF) rather than DOS-style line endings (CRLF). You can use tools like `dos2unix` to convert line endings if needed.
+   The API documentation is available at [http://localhost:8001/api](http://localhost:8001/api).
